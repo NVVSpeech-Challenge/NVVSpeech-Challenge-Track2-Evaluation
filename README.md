@@ -1,6 +1,6 @@
 # NVVSpeech Challenge Track 2 Evaluation
 
-This repository provides the Evaluation program for Track 2 of the NVVSpeech Challenge @ ISCSLP 2026. A Large Audio-Language Model (LALM) evaluates each synthesized audio sample on five components using a 1–5 scale:
+This repository provides the official evaluation code for Track 2 of the NVVSpeech Challenge @ ISCSLP 2026. A Large Audio-Language Model (LALM) evaluates each synthesized audio sample on five components using a 1–5 scale:
 
 - A: NVV Accuracy, weighted at 30%
 - P: NVV Perceptual Effect, weighted at 25%
