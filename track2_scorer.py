@@ -131,18 +131,18 @@ def compute_final_bilingual_score(score_zh: float, score_en: float) -> Dict[str,
 
 # Mapping from LLM eval JSON keys to Track 2 components
 LALM_KEY_TO_COMPONENT_TAG = {
-    "nvc_accuracy_score": "A",
-    "nvc_pe_score": "P",
+    "nvv_accuracy_score": "A",
+    "nvv_pe_score": "P",
     "overall_naturalness_score": "N",
     "overall_quality_score": "Q",
     "overall_expression_score": "E",
-    "nvc_if_score": "A",  # prompt-based: Instruction Following → Accuracy
+    "nvv_if_score": "A",  # prompt-based: Instruction Following → Accuracy
     "cam_score": "E",     # prompt-based: Caption-Audio Match → Expression
 }
 
 LALM_KEY_TO_COMPONENT_PROMPT = {
-    "nvc_if_score": "A",
-    "nvc_pe_score": "P",
+    "nvv_if_score": "A",
+    "nvv_pe_score": "P",
     "overall_naturalness_score": "N",
     "overall_quality_score": "Q",
     "cam_score": "E",
