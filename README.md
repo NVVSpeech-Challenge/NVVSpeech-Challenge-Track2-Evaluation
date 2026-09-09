@@ -63,20 +63,6 @@ A successful evaluation produces:
 
 - `scores.json`: Chinese, English, and final Track 2 scores.
 - `detailed_results.json`: A/P/N/Q/E component scores, normalized values, weights, and sample statistics.
-- `gemini_checkpoint.jsonl`: per-sample records used for resuming interrupted runs; this file should not be published.
+- `gemini_checkpoint.jsonl`: per-sample records used for resuming interrupted runs.
 
-## Packaging
 
-The `program.zip` archive must preserve `program/` as its top-level directory:
-
-```bash
-mkdir -p program
-cp score.py track2_scorer.py metadata.yaml requirements.txt program/
-zip -r program.zip program
-```
-
-Reference data must be configured separately by the challenge organizers and is not included in this repository.
-
-## Data and Security
-
-This repository does not contain the test set, reference data, generated audio, API keys, API base URLs, or per-sample LALM checkpoints. Do not commit any of these materials to a public repository.
