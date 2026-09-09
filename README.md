@@ -19,7 +19,6 @@ In the formula above, A/P/N/Q/E denote the normalized component scores.
 
 - `score.py`: Evaluation entry point, Gemini LALM requests, and input validation.
 - `track2_scorer.py`: component parsing, normalization, and Track 2 score calculation.
-- `metadata.yaml`: Scoring-program launch configuration.
 - `requirements.txt`: Python dependencies.
 - `results/`: publishable aggregate evaluation results without test data or per-sample records.
 
