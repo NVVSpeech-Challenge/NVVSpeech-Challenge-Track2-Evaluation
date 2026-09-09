@@ -1,39 +1,39 @@
 # NVVSpeech Challenge Track 2 Evaluation
 
-本仓库提供 NVVSpeech Challenge @ ISCSLP 2026 Track 2 的 Codabench 兼容评测程序。评委模型对合成音频进行 LALM 评测，并给出五项 1–5 分指标：
+This repository provides the Codabench-compatible evaluation program for Track 2 of the NVVSpeech Challenge @ ISCSLP 2026. A Large Audio-Language Model (LALM) evaluates each synthesized audio sample on five components using a 1–5 scale:
 
-- A：NVV Accuracy（非语言声音准确性），权重 30%
-- P：NVV Perceptual Effect（非语言声音感知效果），权重 25%
-- N：Overall Naturalness（整体自然度），权重 15%
-- Q：Overall Quality（整体音质），权重 15%
-- E：Overall Expression（整体表现力），权重 15%
+- A: NVV Accuracy, weighted at 30%
+- P: NVV Perceptual Effect, weighted at 25%
+- N: Overall Naturalness, weighted at 15%
+- Q: Overall Quality, weighted at 15%
+- E: Overall Expression, weighted at 15%
 
-各项分数先通过 `(x - 1) / 4` 从 1–5 分归一化至 0–1，然后按以下公式计算：
+Each component score is normalized from 1–5 to 0–1 using `(x - 1) / 4`, and the Track 2 scores are calculated as follows:
 
 ```text
 Track2Score = 100 * (0.30*A + 0.25*P + 0.15*N + 0.15*Q + 0.15*E)
 FinalTrack2Score = (Track2Score_ZH + Track2Score_EN) / 2
 ```
 
-上式中的 A/P/N/Q/E 表示归一化后的分数。
+In the formula above, A/P/N/Q/E denote the normalized component scores.
 
-## 文件说明
+## Repository Contents
 
-- `score.py`：Codabench 评测入口、Gemini LALM 请求及输入检查。
-- `track2_scorer.py`：五项指标解析、归一化与 Track 2 得分计算。
-- `metadata.yaml`：Codabench scoring program 启动配置。
-- `requirements.txt`：Python 依赖。
-- `results/`：可公开的汇总评测结果，不包含测试数据和逐样本记录。
+- `score.py`: Codabench evaluation entry point, Gemini LALM requests, and input validation.
+- `track2_scorer.py`: component parsing, normalization, and Track 2 score calculation.
+- `metadata.yaml`: Codabench scoring-program launch configuration.
+- `requirements.txt`: Python dependencies.
+- `results/`: publishable aggregate evaluation results without test data or per-sample records.
 
-## 安装依赖
+## Installation
 
 ```bash
 python3 -m pip install -r requirements.txt
 ```
 
-## 环境变量
+## Environment Variables
 
-评测前需要在运行环境中设置 API 信息。不要把真实值写入代码或提交到 GitHub。
+Set the API configuration in the runtime environment before evaluation. Never write real credentials into the source code or commit them to GitHub.
 
 ```bash
 export GEMINI_API_BASE_URL="<your-api-base-url>"
@@ -41,7 +41,7 @@ export GEMINI_API_KEY="<your-api-key>"
 export GEMINI_MODEL="gemini-2.5-pro"
 ```
 
-可选并发与重试参数：
+Optional concurrency and retry settings:
 
 ```bash
 export MAX_WORKERS=4
@@ -49,25 +49,25 @@ export MAX_RETRIES=6
 export GLOBAL_SEED=1234
 ```
 
-## 本地运行
+## Local Evaluation
 
 ```bash
 python3 score.py /path/to/ref /path/to/res /path/to/output
 ```
 
-- `ref`：由赛事组织方授权提供的参考数据目录，应包含中英文 `prepared_data_*.json`。
-- `res`：待评测的 WAV 文件目录或提交压缩包。
-- `output`：评测输出目录。
+- `ref`: an organizer-authorized reference directory containing the Chinese and English `prepared_data_*.json` files.
+- `res`: a directory of submitted WAV files or a submission archive.
+- `output`: the directory in which evaluation outputs will be written.
 
-评测成功后会生成：
+A successful evaluation produces:
 
-- `scores.json`：中文、英文和最终 Track 2 得分。
-- `detailed_results.json`：A/P/N/Q/E 小分、归一化值、权重和样本统计。
-- `gemini_checkpoint.jsonl`：用于断点续跑的逐样本记录，不建议公开提交。
+- `scores.json`: Chinese, English, and final Track 2 scores.
+- `detailed_results.json`: A/P/N/Q/E component scores, normalized values, weights, and sample statistics.
+- `gemini_checkpoint.jsonl`: per-sample records used for resuming interrupted runs; this file should not be published.
 
-## Codabench 打包
+## Codabench Packaging
 
-`program.zip` 中应保留 `program/` 顶层目录：
+The `program.zip` archive must preserve `program/` as its top-level directory:
 
 ```bash
 mkdir -p program
@@ -75,8 +75,8 @@ cp score.py track2_scorer.py metadata.yaml requirements.txt program/
 zip -r program.zip program
 ```
 
-参考数据应由赛事组织方单独配置，不包含在本仓库中。
+Reference data must be configured separately by the challenge organizers and is not included in this repository.
 
-## 数据与安全说明
+## Data and Security
 
-本仓库不包含测试集、参考数据、生成音频、API Key、API Base URL 或逐样本 LALM checkpoint。请勿将上述内容提交到公开仓库。
+This repository does not contain the test set, reference data, generated audio, API keys, API base URLs, or per-sample LALM checkpoints. Do not commit any of these materials to a public repository.
