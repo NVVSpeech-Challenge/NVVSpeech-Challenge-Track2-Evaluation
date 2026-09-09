@@ -8,8 +8,6 @@ This repository provides the Evaluation program for Track 2 of the NVVSpeech Cha
 - Q: Overall Quality, weighted at 15%
 - E: Overall Expression, weighted at 15%
 
-Each component score is normalized from 1–5 to 0–1 using `(x - 1) / 4`, and the Track 2 scores are calculated as follows:
-
 ```text
 Track2Score = 100 * (0.30*A + 0.25*P + 0.15*N + 0.15*Q + 0.15*E)
 FinalTrack2Score = (Track2Score_ZH + Track2Score_EN) / 2
