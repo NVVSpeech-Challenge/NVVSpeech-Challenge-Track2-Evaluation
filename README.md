@@ -1,6 +1,6 @@
 # NVVSpeech Challenge Track 2 Evaluation
 
-This repository provides the Codabench-compatible evaluation program for Track 2 of the NVVSpeech Challenge @ ISCSLP 2026. A Large Audio-Language Model (LALM) evaluates each synthesized audio sample on five components using a 1–5 scale:
+This repository provides the Evaluation program for Track 2 of the NVVSpeech Challenge @ ISCSLP 2026. A Large Audio-Language Model (LALM) evaluates each synthesized audio sample on five components using a 1–5 scale:
 
 - A: NVV Accuracy, weighted at 30%
 - P: NVV Perceptual Effect, weighted at 25%
@@ -19,9 +19,9 @@ In the formula above, A/P/N/Q/E denote the normalized component scores.
 
 ## Repository Contents
 
-- `score.py`: Codabench evaluation entry point, Gemini LALM requests, and input validation.
+- `score.py`: Evaluation entry point, Gemini LALM requests, and input validation.
 - `track2_scorer.py`: component parsing, normalization, and Track 2 score calculation.
-- `metadata.yaml`: Codabench scoring-program launch configuration.
+- `metadata.yaml`: Scoring-program launch configuration.
 - `requirements.txt`: Python dependencies.
 - `results/`: publishable aggregate evaluation results without test data or per-sample records.
 
@@ -65,7 +65,7 @@ A successful evaluation produces:
 - `detailed_results.json`: A/P/N/Q/E component scores, normalized values, weights, and sample statistics.
 - `gemini_checkpoint.jsonl`: per-sample records used for resuming interrupted runs; this file should not be published.
 
-## Codabench Packaging
+## Packaging
 
 The `program.zip` archive must preserve `program/` as its top-level directory:
 
