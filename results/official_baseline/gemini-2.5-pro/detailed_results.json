@@ -1,0 +1,101 @@
+{
+  "status": "success",
+  "scores": {
+    "Track2Score_ZH": 77.61875,
+    "Track2Score_EN": 70.301562,
+    "FinalTrack2Score": 73.960156
+  },
+  "per_lang_counts": {
+    "zh": {
+      "A": 800,
+      "P": 800,
+      "N": 800,
+      "Q": 800,
+      "E": 800
+    },
+    "en": {
+      "A": 800,
+      "P": 800,
+      "N": 800,
+      "Q": 800,
+      "E": 800
+    }
+  },
+  "num_errors": 0,
+  "num_scored_samples": 1600,
+  "elapsed_s": 594.5,
+  "details": {
+    "zh": {
+      "components": {
+        "A": {
+          "name": "NVV Accuracy",
+          "raw": 4.5225,
+          "normalized": 0.880625,
+          "weight": 0.3
+        },
+        "P": {
+          "name": "NVV Perceptual Effect",
+          "raw": 4.40625,
+          "normalized": 0.8515625,
+          "weight": 0.25
+        },
+        "N": {
+          "name": "Overall Naturalness",
+          "raw": 3.7325,
+          "normalized": 0.683125,
+          "weight": 0.15
+        },
+        "Q": {
+          "name": "Overall Quality",
+          "raw": 3.02625,
+          "normalized": 0.5065625,
+          "weight": 0.15
+        },
+        "E": {
+          "name": "Overall Expression",
+          "raw": 4.2175,
+          "normalized": 0.8043750000000001,
+          "weight": 0.15
+        }
+      },
+      "weighted_sum": 0.7761874999999999,
+      "track2_score": 77.61874999999999
+    },
+    "en": {
+      "components": {
+        "A": {
+          "name": "NVV Accuracy",
+          "raw": 4.3675,
+          "normalized": 0.8418749999999999,
+          "weight": 0.3
+        },
+        "P": {
+          "name": "NVV Perceptual Effect",
+          "raw": 3.89625,
+          "normalized": 0.7240625,
+          "weight": 0.25
+        },
+        "N": {
+          "name": "Overall Naturalness",
+          "raw": 3.365,
+          "normalized": 0.59125,
+          "weight": 0.15
+        },
+        "Q": {
+          "name": "Overall Quality",
+          "raw": 3.08,
+          "normalized": 0.52,
+          "weight": 0.15
+        },
+        "E": {
+          "name": "Overall Expression",
+          "raw": 3.74,
+          "normalized": 0.685,
+          "weight": 0.15
+        }
+      },
+      "weighted_sum": 0.7030156249999999,
+      "track2_score": 70.30156249999999
+    }
+  }
+}

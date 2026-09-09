@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+.env
+*.env
+
+# Private evaluation inputs and generated audio
+test_set.jsonl
+prepared_data_*.json
+*.wav
+*.mp3
+ref/
+res/
+
+# Runtime outputs and per-sample judge records
+output/
+outputs/
+gemini_checkpoint.jsonl
+validation_error.json
+
+# Local submission/evaluation archives
+*.zip
