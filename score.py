@@ -83,8 +83,8 @@ METRIC_TO_JSON_KEY = {
     "Overall Naturalness": "overall_naturalness",
     "Overall Quality": "overall_quality",
     "Overall Expression": "overall_expression",
-    "NVC Accuracy": "nvc_accuracy",
-    "NVC Perceptual Effect (PE)": "nvc_pe",
+    "NVC Accuracy": "nvv_accuracy",
+    "NVC Perceptual Effect (PE)": "nvv_pe",
 }
 
 TAG_METRICS = [
@@ -446,13 +446,13 @@ def apply_hard_caps(pred: dict, task_mode: str) -> dict:
 
     # Keep original conservative cap for tag mode if NVC totally absent (does NOT affect Quality/Naturalness).
     if task_mode == "tag":
-        nvc_acc = clamp_int(out.get("nvc_accuracy_score"), 0, 5)
-        nvc_pe = clamp_int(out.get("nvc_pe_score"), 0, 5)
-        if nvc_acc == 0 or nvc_pe == 0:
+        nvv_acc = clamp_int(out.get("nvv_accuracy_score"), 0, 5)
+        nvv_pe = clamp_int(out.get("nvv_pe_score"), 0, 5)
+        if nvv_acc == 0 or nvv_pe == 0:
             s = clamp_int(out.get("overall_expression_score"), 1, 5)
             if s is not None and s > 3:
                 out["overall_expression_score"] = 3
-                caps_applied["overall_expression_score"] = "tag_mode_nvc_absent"
+                caps_applied["overall_expression_score"] = "tag_mode_nvv_absent"
 
     out["issues"] = sorted(list(issues))
     out["caps_applied"] = caps_applied
@@ -580,8 +580,8 @@ async def evaluate_one(
 
 
 REQUIRED_SCORE_KEYS = (
-    "nvc_accuracy_score",
-    "nvc_pe_score",
+    "nvv_accuracy_score",
+    "nvv_pe_score",
     "overall_naturalness_score",
     "overall_quality_score",
     "overall_expression_score",
@@ -601,7 +601,7 @@ def validate_prediction(pred: dict) -> dict:
             )
         if not math.isfinite(float(value)):
             raise RetryableEvaluationError(f"Non-finite score: {key}={value}")
-        lower = 0.0 if key.startswith("nvc_") else 1.0
+        lower = 0.0 if key.startswith("nvv_") else 1.0
         if not lower <= float(value) <= 5.0:
             raise RetryableEvaluationError(
                 f"Out-of-range score: {key}={value}; expected [{lower}, 5]"
@@ -1393,8 +1393,8 @@ def main() -> int:
 
     # LALM key → Track2 component mapping
     LALM_KEY_MAP = {
-        "nvc_accuracy_score": "A",
-        "nvc_pe_score": "P",
+        "nvv_accuracy_score": "A",
+        "nvv_pe_score": "P",
         "overall_naturalness_score": "N",
         "overall_quality_score": "Q",
         "overall_expression_score": "E",
