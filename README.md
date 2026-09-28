@@ -70,9 +70,11 @@ Huggingface: [Track 2 test set](https://huggingface.co/datasets/NVVSpeech-Challe
 ## Citation
 The evaluation framework behind the challenge is described in the [NVV-SuperBench](https://arxiv.org/abs/2604.16211) paper. If you use this challenge or its evaluation protocol in your work, please cite:
 
+```bibtex
 @article{xue2026nvv,
   title={NVV-SuperBench: Beyond Words, Beyond Quality-Benchmarking Nonverbal Vocalizations in Speech Generation},
   author={Xue, Liumeng and Bian, Weizhen and Pan, Jiahao and Wu, Wenxuan and Ren, Yilin and Kang, Boyi and Hu, Jingbin and Ma, Ziyang and Wang, Shuai and Qian, Xinyuan and others},
   journal={arXiv preprint arXiv:2604.16211},
   year={2026}
 }
+```
