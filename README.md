@@ -15,6 +15,8 @@ FinalTrack2Score = (Track2Score_ZH + Track2Score_EN) / 2
 
 In the formula above, A/P/N/Q/E denote the normalized component scores.
 
+Detailed metric definitions can be found in the official [NVVSpeech Challenge website](https://nvvspeech-challenge.github.io/).
+
 ## Repository Contents
 
 - `score.py`: Evaluation entry point, Gemini LALM requests, and input validation.
@@ -62,4 +64,5 @@ A successful evaluation produces:
 - `detailed_results.json`: A/P/N/Q/E component scores, normalized values, weights, and sample statistics.
 - `gemini_checkpoint.jsonl`: per-sample records used for resuming interrupted runs.
 
-
+## Test set
+Huggingface: [Track 2 test set](https://huggingface.co/datasets/NVVSpeech-Challenge/NVVSpeech-Challenge-Track2-Test-Set)
